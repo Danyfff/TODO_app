@@ -35,5 +35,6 @@ class Login(QMainWindow, Ui_MainWindow):
 
 # # Запускаем цикл событий.
 # app.exec()
+
 if __name__ == '__main__': 
     base_manager = DBManager(DB_PATH)
