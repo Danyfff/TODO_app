@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from .settings import DB_PATH, DB_SCRIPTS_PATH
 
 
 class DBManager:
@@ -7,6 +8,7 @@ class DBManager:
         self.db_path = db_path
         if not self.check_base():
             self.create_base()
+        print('Create DBManager')
 
     def check_base(self) -> bool:
         return os.path.exists(self.db_path)
@@ -19,7 +21,7 @@ class DBManager:
     def create_base(self):
         conn, cur = self.connect_to_base()
         try:
-            cur.executescript(open('BD/tables.sql').read())
+            cur.executescript(open(DB_SCRIPTS_PATH).read())
             conn.commit()
             print('Tables are created')
         except sqlite3.Error as ex:
@@ -39,3 +41,6 @@ class DBManager:
             return {"code": 400}
         finally:
             conn.close()
+            
+
+base_manager = DBManager(DB_PATH)
