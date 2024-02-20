@@ -35,7 +35,8 @@ class DBManager:
             res = cur.execute(query, args)
             result = res.fetchall() if many else res.fetchone()
             conn.commit()
-            return {"code": 200, "data": result}
+            last_row_id = cur.lastrowid
+            return {"code": 200, "data": result, 'lastrowid': last_row_id}
         except sqlite3.Error as er:
             print(str(er))
             return {"code": 400}
