@@ -1,1 +1,1 @@
-from .base_manager import DBManager
+from .base_manager import base_manager

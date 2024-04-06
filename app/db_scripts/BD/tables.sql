@@ -1,6 +1,7 @@
 CREATE TABLE users(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR(100)
+    name VARCHAR(100),
+    password VARCHAR(100)
 );
 
 CREATE TABLE notes(
